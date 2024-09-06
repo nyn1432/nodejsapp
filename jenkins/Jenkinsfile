@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'npm ci' // Use `npm ci` for clean install
+                sh 'npm install' // Use `npm ci` for clean install
             }
         }
         stage('Test') {
