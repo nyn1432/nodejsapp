@@ -5,13 +5,15 @@ pipeline {
             args '-p 3000:3000'
         }
     }
-    environment {
-        CI = 'true'
-    }
     stages {
+        stage('Cleanup') {
+            steps {
+                deleteDir() // Clean workspace before starting
+            }
+        }
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh 'npm ci' // Use `npm ci` for clean install
             }
         }
         stage('Test') {
